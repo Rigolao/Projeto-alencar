@@ -1,0 +1,114 @@
+.container-fluid {
+    padding: 0;
+}
+
+/* Navbar */
+
+.navbar {
+    border-bottom: 1px #333;
+    margin-bottom: 20px;
+}
+
+.navbar-nav {
+    margin: auto;
+}
+
+.navbar-brand {
+    font-weight: bold;
+}
+
+.navbar-light .navbar-nav a.nav-link {
+    color: rgb(0, 132, 255);
+    letter-spacing: 1px;
+}
+
+.nav-item a.nav-link_active {
+    color:red;
+}
+
+/* Botão de adicionar */
+
+.add-div {
+    background-color: #3476e2;
+    cursor: pointer;
+    display: inline-block;
+    color: #fff;
+    padding: 8px;
+    border-radius: 5px;
+    margin-right: 25px;
+    /* Diminuir tamanho do bloco */
+}
+
+.fas.fa-plus {
+    color: #fff;
+    margin-right: 10px;
+    margin-left: 5px;
+}
+
+/* Search */
+
+.fas.fa-search {
+    position: absolute;
+    top: 12px;
+    right: 26px;
+}
+
+.search-div {
+    padding: 0px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    display: inline-block;
+}
+
+/* Lista de Documentos */
+
+.list-div{
+    padding: 0;
+}
+
+.doc-list {
+    padding-left: 0;
+}
+
+.doc-item {
+    list-style: none;
+    font-size: 20px;
+    height: 50px;
+    padding-top: 10px;
+    border-bottom: 1px dashed #ccc;
+}
+
+.fas.fa-trash, .fas.fa-edit, .fas.fa-download {
+    cursor: pointer;
+    margin: 5px;
+    font-size: 20px;
+    float: right;
+}
+
+.fas.fa-trash {
+    color: red;
+}
+
+.fas.fa-edit {
+    color: green;
+}
+
+.fas.fa-download {
+    color: blue;
+}
+
+/*Rodapé */
+
+footer {
+    background-color: #e3f2fd;
+    height: 300px;
+    border-top: 2px solid #3336f7;
+}
+
+footer p {
+    color: rgb(0, 132, 255);
+    text-align: center;
+    top: 50%;
+    position: relative;
+}
+

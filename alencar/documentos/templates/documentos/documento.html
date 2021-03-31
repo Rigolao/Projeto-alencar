@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block title %}Documentos{% endblock %}
+
+{% block content %} 
+<div class="offset-1 col-10 list-div">
+    <h1>{{documento.title}}</h1>
+    <p>{{documento.description}}</p>
+</div>
+{% endblock %}

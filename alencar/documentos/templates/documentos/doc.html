@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Documentos{% endblock %}
+
+{% block content %} 
+<div class="offset-1 col-10 list-div">
+    <h1>Documentos</h1>
+    <div class="col-2 add-div">
+        <i class="fas fa-plus"></i>Adicionar 
+    </div>
+    <div class="col-9 search-div">
+        <input class="form-control" type="text" id="search" name="search" placeholder="Digite o nome da tarefa para buscar">
+        <i class="fas fa-search"></i>
+    </div>
+    <ul class="doc-list">
+        {% for documento in documentos %}
+        <li class="doc-item">
+            <span><a href="/documento/{{documento.id}}">{{documento.title}}</a></span>
+            <span><i class="fas fa-trash"></i></span>
+            <span><i class="fas fa-edit"></i></span>
+            <span><i class="fas fa-download"></i></span>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
