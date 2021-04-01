@@ -28,6 +28,10 @@
 
 /* Botão de adicionar */
 
+#add-link {
+    text-decoration: none;
+}
+
 .add-div {
     background-color: #3476e2;
     cursor: pointer;
@@ -97,6 +101,14 @@
     color: blue;
 }
 
+/* Documentos */
+
+.fas.fa-long-arrow-alt-left {
+    color:black;
+    cursor: pointer;
+    list-style: none;
+}
+
 /*Rodapé */
 
 footer {
@@ -110,5 +122,33 @@ footer p {
     text-align: center;
     top: 50%;
     position: relative;
+}
+
+/* Messages */
+
+ul.messages {
+    padding: 0;
+}
+
+ul.messages li {
+    list-style: none;
+}
+
+
+/* Pagninação */
+
+.pagination {
+    margin-bottom: 20px;
+}
+
+.step-links {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.step-links .current {
+    margin-left: 5px;
+    margin-right: 5px;
 }
 

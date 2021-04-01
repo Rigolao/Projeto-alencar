@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Editar '{{documento.title}}'{% endblock %}
+
+{% block content %} 
+<div class="offset-1 col-10 list-div">
+    <a href="/doc/">
+        <i class="fas fa-long-arrow-alt-left"></i>
+    </a>
+    <h1>Editando '{{documento.title}}'</h1>
+    <form method="POST">
+        {% csrf_token %} 
+        {{ form.as_p }}
+        <input type="submit" class="btn btn-success" value="Editar documento">
+    </form>     
+</div>
+{% endblock %}

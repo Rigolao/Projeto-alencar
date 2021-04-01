@@ -3,8 +3,8 @@ from django.db import models
 class Documento(models.Model):
 
     STATUS = (
-        ('doing', 'Empresa'),
-        ('done', 'Assunto'),
+        ('done', 'Empresa'),
+        ('doing', 'Assunto'),
     )
 
     title = models.CharField(max_length=255)
