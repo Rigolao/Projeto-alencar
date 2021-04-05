@@ -5,4 +5,4 @@ class DocForm(forms.ModelForm):
     
     class Meta:
         model = Documento
-        fields = ('title', 'description', 'done')
+        fields = ('title', 'description', 'tipo')

@@ -1,6 +1,10 @@
 $(document).ready(function() {
 
-    var deleteBtn = $('.detete-btn');
+    var baseUrl   = 'http://localhost:8000/doc/';
+    var deleteBtn = $('.delete-btn');
+    var searchBtn = $('#search-btn');
+    var searchForm = $('#search-form');
+    var filter    = $('#filter');
 
     $(deleteBtn).on('click', function(e) {
 
@@ -9,10 +13,20 @@ $(document).ready(function() {
         var delLink = $(this).attr('href');
         var result = confirm('Quer deletar este documento?');
 
-        if(result ) {
+        if(result) {
             window.location.href = delLink;
         }
 
     });
+    
+    $(searchBtn).on('click', function() {
+        searchForm.submit();
+    });
 
-})
+    $(filter).change(function() {
+        var filter = $(this).val();
+        window.location.href = baseUrl + '?filter=' + filter;
+    });
+
+});
+

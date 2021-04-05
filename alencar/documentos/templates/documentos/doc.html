@@ -11,8 +11,18 @@
         </div>
     </a>    
     <div class="col-9 search-div">
-        <input class="form-control" type="text" id="search" name="search" placeholder="Digite o nome da tarefa para buscar">
-        <i class="fas fa-search"></i>
+        <form method="GET" id="search-form">
+            <input class="form-control" type="text" id="search" name="search" placeholder="Digite o nome do documento para buscar" value="{{ request.GET.search }}">
+            <i class="fas fa-search" id="search-btn"></i>
+        </form>
+    </div>
+    <div class="col-12 filter-div">
+        <span>Filtrar por</span>
+        <select name="filter" id="filter" class="form-control">
+            <option value="">Escolha uma opção</option>
+            <option value="done">Documentos da Empresa</option>
+            <option value="doing">Documentos por Assunto</option>
+        </select>
     </div>
     {% if messages %} 
     <ul class="messages">
@@ -37,9 +47,11 @@
                 <a href="?page={{ documentos.previous_page_number }}"><i class="fas fa-arrow-left"></i></a>
             {% endif %}
 
+            {% if documentos.paginator.num_pages %} 
             <span class="current">
                 {{ documentos.number }} de {{ documentos.paginator.num_pages }}
             </span>
+            {% endif %}
 
             {% if documentos.has_next %} 
                 <a href="?page={{ documentos.next_page_number }}"><i class="fas fa-arrow-right"></i></a>

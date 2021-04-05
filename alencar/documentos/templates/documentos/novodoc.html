@@ -1,14 +1,48 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 
 {% block title %}Novo documento{% endblock %}
 
 {% block content %} 
 <div class="offset-1 col-10 list-div">
-    <h1>Adicione o documento</h1>
-    <form method="POST">
-        {% csrf_token %} 
-        {{ form.as_p }}
-        <input type="submit" class="btn btn-success" value="Adicionar documento">
-    </form>     
+    <a href="/doc/">
+        <i class="fas fa-long-arrow-alt-left"></i>
+    </a>
+    <h1>Adicione o documento <i class="fas fa-upload"></i></h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            {{ form.CNPJ|as_crispy_field }}
+        </div>
+        <div class="form-row">
+            <div class="col-md-6">
+                {{ form.Razao_Social|as_crispy_field }}
+            </div>
+            <div class="col-md-6">
+                {{ form.Nome_Fantasia|as_crispy_field }}
+            </div>
+        </div>
+        <button type="button" class="btn btn-primary btn-lg btn-block" id="DNIT"
+            data-toggle="collapse" data-target="#collapseDNIT">DNIT</button>
+        <div class="form-row" id="collapseDNIT">
+            <div class="col-md-6">
+                {{ form.DNIT_Login|as_crispy_field }}
+            </div>
+            <div class="col-md-6">
+                {{ form.DNIT_Senha|as_crispy_field }}
+            </div>
+        </div>
+        <button type="button" class="btn btn-primary btn-lg btn-block" id="PR"
+            data-toggle="collapse" data-target="#collapsePR">PR</button>
+        <div class="form-row" id="collapsePR">
+            <div class="col-md-6">
+                {{ form.PR_Login|as_crispy_field }}
+            </div>
+            <div class="col-md-6">
+                {{ form.PR_Senha|as_crispy_field }}
+            </div>
+        </div>
+        <button type="submit" class="btn btn-success">Finalizar e Salvar</button>
+    </form>   
 </div>
 {% endblock %}

@@ -2,6 +2,10 @@
     padding: 0;
 }
 
+.container-fluid .row{
+    margin: 0;
+}
+
 /* Navbar */
 
 .navbar {
@@ -55,6 +59,7 @@
     position: absolute;
     top: 12px;
     right: 26px;
+    cursor: pointer;
 }
 
 .search-div {
@@ -62,6 +67,19 @@
     margin-top: 15px;
     margin-bottom: 15px;
     display: inline-block;
+}
+
+/* filter */
+
+.filter-div {
+    margin-bottom: 15px;
+    padding: 0;
+}
+
+#filter {
+    display: inline-block;
+    width: 200px;
+    margin-left: 10px;
 }
 
 /* Lista de Documentos */
@@ -150,5 +168,16 @@ ul.messages li {
 .step-links .current {
     margin-left: 5px;
     margin-right: 5px;
+}
+
+/* login */
+
+.auth-card {
+    margin-bottom: 30px;
+}
+
+.change-form-p {
+    margin-top: 30px;
+    text-align: center;
 }
 
