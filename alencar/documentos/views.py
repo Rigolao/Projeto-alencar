@@ -3,9 +3,11 @@ from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from django.http import HttpResponse
 from .forms import DocForm
+from .forms import UploadDocForm
 from django.contrib import messages
 
-from .models import Documento
+from .models import Documento 
+from .models import EDocModel
 
 @login_required
 def empresaHome(request):
@@ -43,20 +45,17 @@ def documentoView(request, id):
     return render(request, 'documentos/documento.html', {'documento': documento})
 
 @login_required
-def novoDoc(request):
+def DocUploadView(request):
     if request.method == 'POST':
-        form = DocForm(request.POST)
-
+        form = UploadDocForm(request.POST, request.FILES)
         if form.is_valid():
-            documento = form.save(commit=False)
-            documento.user = request.user
-            documento.save()
-            messages.info(request, 'Documento adicionado com sucesso')
+            form.save()
             return redirect('/doc')
-
     else:
-        form = DocForm()
-        return render(request, 'documentos/novodoc.html', {'form': form})
+        form = UploadDocForm()
+        context = {'form', form}
+        return render(request, 'documentos/upload.html', context)
+    
 
 @login_required
 def editDoc(request, id):

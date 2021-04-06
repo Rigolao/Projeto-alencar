@@ -10,7 +10,6 @@ class Documento(models.Model):
 
     title = models.CharField(max_length=255)
     description = models.TextField()
-    pdf = models.FileField(upload_to='upload_pdf/', max_length=100, blank=True)
     tipo = models.CharField(
         max_length=7,
         choices=STATUS
@@ -21,4 +20,15 @@ class Documento(models.Model):
 
     def __str__(self):
         return self.title
+
+class EDocModel(models.Model):
+
+    title = models.CharField(max_length=80)
+    pdf = models.FileField(upload_to='pdfs/')
+
+    class Meta:
+        ordering = ['title']
+
+    def __str__(self):
+        return f"{self.title}"
 
