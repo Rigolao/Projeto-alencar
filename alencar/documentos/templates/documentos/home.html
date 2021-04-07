@@ -3,5 +3,47 @@
 {% block title %}Home do Site{% endblock %}
 
 {% block content %} 
-<h1>Home do Site</h1>
+<div class="offset-1 col-10 list-div">
+    <h1>Criar Pasta</h1>
+    <a id="add-link" href="/novapasta/">
+        <div class="col-2 add-div">
+            <i class="fas fa-plus"></i>Adicionar 
+        </div>
+    </a>    
+    {% if messages %} 
+    <ul class="messages">
+        {% for message in messages %} 
+            <li {% if message.tags %}class="alert alert-{{message.tags}}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <h1>Pastas Criadas</h1>
+    <ul class="doc-list">
+        {% for pasta in pastas %}
+        <li class="doc-item">
+            <span><a href="/doc/upload">{{pasta.title}}</a></span>
+            <a href="/delete/{{pasta.id}}" class="delete-btn"><span><i class="fas fa-times-circle"></i></span></a>
+            <a href="/pasta/{{pasta.id}}/itens"><span><i class="fas fa-box"></i></span></a>
+            <span><i class="fas fa-download"></i></span>
+        </li>
+        {% endfor %}
+    </ul>
+    <div class="pagination">
+        <span class="step-links">
+            {% if pastas.has_previous %} 
+                <a href="?page={{ pastas.previous_page_number }}"><i class="fas fa-arrow-left"></i></a>
+            {% endif %}
+
+            {% if pastas.paginator.num_pages %} 
+            <span class="current">
+                {{ pastas.number }} de {{ pastas.paginator.num_pages }}
+            </span>
+            {% endif %}
+
+            {% if pastas.has_next %} 
+                <a href="?page={{ pastas.next_page_number }}"><i class="fas fa-arrow-right"></i></a>
+            {% endif %}
+        </span>
+    </div>
+</div>
 {% endblock %}

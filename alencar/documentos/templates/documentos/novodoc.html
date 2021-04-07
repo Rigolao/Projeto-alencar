@@ -11,37 +11,7 @@
     <h1>Adicione o documento <i class="fas fa-upload"></i></h1>
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        <div class="form-group">
-            {{ form.CNPJ|as_crispy_field }}
-        </div>
-        <div class="form-row">
-            <div class="col-md-6">
-                {{ form.Razao_Social|as_crispy_field }}
-            </div>
-            <div class="col-md-6">
-                {{ form.Nome_Fantasia|as_crispy_field }}
-            </div>
-        </div>
-        <button type="button" class="btn btn-primary btn-lg btn-block" id="DNIT"
-            data-toggle="collapse" data-target="#collapseDNIT">DNIT</button>
-        <div class="form-row" id="collapseDNIT">
-            <div class="col-md-6">
-                {{ form.DNIT_Login|as_crispy_field }}
-            </div>
-            <div class="col-md-6">
-                {{ form.DNIT_Senha|as_crispy_field }}
-            </div>
-        </div>
-        <button type="button" class="btn btn-primary btn-lg btn-block" id="PR"
-            data-toggle="collapse" data-target="#collapsePR">PR</button>
-        <div class="form-row" id="collapsePR">
-            <div class="col-md-6">
-                {{ form.PR_Login|as_crispy_field }}
-            </div>
-            <div class="col-md-6">
-                {{ form.PR_Senha|as_crispy_field }}
-            </div>
-        </div>
+        {{ form|crispy }}
         <button type="submit" class="btn btn-success">Finalizar e Salvar</button>
     </form>   
 </div>

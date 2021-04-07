@@ -11,7 +11,7 @@ $(document).ready(function() {
         e.preventDefault();
 
         var delLink = $(this).attr('href');
-        var result = confirm('Quer deletar este documento?');
+        var result = confirm('Quer deletar este conteúdo?');
 
         if(result) {
             window.location.href = delLink;

@@ -1,5 +1,5 @@
 from django import forms
-from .models import Documento, EDocModel
+from .models import Documento, EDocModel, Pasta
 
 class DocForm(forms.ModelForm):
     
@@ -12,3 +12,9 @@ class UploadDocForm(forms.ModelForm):
     class Meta:
         model = EDocModel
         fields = ('title', 'pdf')   
+
+class PastaForm(forms.ModelForm):
+
+    class Meta:
+        model = Pasta
+        fields = ('title',)

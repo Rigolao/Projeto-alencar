@@ -4,14 +4,61 @@ from django.core.paginator import Paginator
 from django.http import HttpResponse
 from .forms import DocForm
 from .forms import UploadDocForm
+from .forms import PastaForm
 from django.contrib import messages
 
 from .models import Documento 
 from .models import EDocModel
+from .models import Pasta
 
 @login_required
-def empresaHome(request):
-    return render(request, 'documentos/home.html')
+def pastaList(request):
+    pastas_list = Pasta.objects.all().order_by('-created_at')
+
+    paginator = Paginator(pastas_list, 4)
+
+    page = request.GET.get('page')
+
+    pastas = paginator.get_page(page)
+
+    return render(request, 'documentos/home.html', {'pastas': pastas})
+
+@login_required
+def pastaView(request, id):
+    pasta = get_object_or_404(Pasta, pk=id)
+    return render(request, 'documentos/pasta.html', {'pasta': pasta})
+
+@login_required
+def novaPasta(request):
+    if request.method == 'POST':
+        form = PastaForm(request.POST)
+        if form.is_valid():
+            pasta = form.save(commit=False)
+            pasta.save()
+            return redirect('/')
+
+    else:    
+        form = PastaForm()
+        return render(request,'documentos/novapasta.html', {'form': form})
+
+@login_required
+def deletePasta(request, id):
+    pasta = get_object_or_404(Pasta, pk=id)
+    pasta.delete()
+    return redirect('/')
+
+@login_required
+def itensList(request, id):
+    itens_list = EDocModel.objects.all()#.order_by('-created_at')
+
+    paginator = Paginator(itens_list, 4)
+
+    page = request.GET.get('page')
+
+    itens = paginator.get_page(page)
+
+    return render(request, 'documentos/itenslist.html', {'itens': itens})
+
 
 @login_required
 def empresaDoc(request):
@@ -80,3 +127,4 @@ def deleteDoc(request, id):
         messages.info(request, 'Documento deletado com sucesso')
 
         return redirect('/doc')
+

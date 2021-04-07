@@ -84,6 +84,11 @@
 
 /* Lista de Documentos */
 
+
+.itens-div{
+    padding: 0;
+}
+
 .list-div{
     padding: 0;
 }
@@ -100,18 +105,18 @@
     border-bottom: 1px dashed #ccc;
 }
 
-.fas.fa-trash, .fas.fa-edit, .fas.fa-download {
+.fas.fa-times-circle, .fas.fa-box, .fas.fa-download {
     cursor: pointer;
     margin: 5px;
     font-size: 20px;
     float: right;
 }
 
-.fas.fa-trash {
+.fas.fa-times-circle {
     color: red;
 }
 
-.fas.fa-edit {
+.fas.fa-box {
     color: green;
 }
 

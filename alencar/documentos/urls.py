@@ -5,7 +5,11 @@ from django.conf.urls.static import static
 from . import views
 
 urlpatterns = [
-    path('', views.empresaHome, name="empresa-home"),
+    path('', views.pastaList, name="pasta-list"),
+    path('pasta/<int:id>', views.pastaView, name="pasta-view"),
+    path('novapasta/', views.novaPasta, name="nova-pasta"),
+    path('delete/<int:id>', views.deletePasta, name="delete-pasta"),
+    path('pasta/<int:id>/itens', views.itensList, name="itens-list"),
     path('doc/', views.empresaDoc, name="empresa-doc"),
     path('documento/<int:id>', views.documentoView, name="documento-view"),
     # path('novodoc/', views.novoDoc, name="novo-doc"),
