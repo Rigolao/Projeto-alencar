@@ -46,15 +46,13 @@ def documentoView(request, id):
 
 @login_required
 def DocUploadView(request):
+    form = UploadDocForm
     if request.method == 'POST':
         form = UploadDocForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('/doc')
-    else:
-        form = UploadDocForm()
-        context = {'form', form}
-        return render(request, 'documentos/upload.html', context)
+            
+    return render(request, 'documentos/upload.html', {'form': form})
     
 
 @login_required
