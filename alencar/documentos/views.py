@@ -26,7 +26,16 @@ def pastaList(request):
 @login_required
 def pastaView(request, id):
     pasta = get_object_or_404(Pasta, pk=id)
-    return render(request, 'documentos/pasta.html', {'pasta': pasta})
+
+    itens_list = EDocModel.objects.all()
+
+    paginator = Paginator(itens_list, 4)
+
+    page = request.GET.get('page')
+
+    itens = paginator.get_page(page)
+
+    return render(request, 'documentos/pasta.html', {'pasta': pasta, 'itens': itens})
 
 @login_required
 def novaPasta(request):
@@ -47,17 +56,23 @@ def deletePasta(request, id):
     pasta.delete()
     return redirect('/')
 
-@login_required
-def itensList(request, id):
-    itens_list = EDocModel.objects.all()#.order_by('-created_at')
+# @login_required
+# def itensList(request, id):
+#     itens_list = EDocModel.objects.all().order_by('-created_at')
 
-    paginator = Paginator(itens_list, 4)
+#     paginator = Paginator(itens_list, 4)
 
-    page = request.GET.get('page')
+#     page = request.GET.get('page')
 
-    itens = paginator.get_page(page)
+#     itens = paginator.get_page(page)
 
-    return render(request, 'documentos/itenslist.html', {'itens': itens})
+#     return render(request, 'documentos/itenslist.html', {'itens': itens})
+
+# @login_required
+# def deleteItem(request, id):
+#     item = get_object_or_404(EDocModel, pk=id)
+#     item.delete()
+#     return redirect('/')
 
 
 @login_required
@@ -92,14 +107,15 @@ def documentoView(request, id):
     return render(request, 'documentos/documento.html', {'documento': documento})
 
 @login_required
-def DocUploadView(request):
-    form = UploadDocForm
+def DocUploadView(request, id):
+    form = UploadDocForm()
     if request.method == 'POST':
-        form = UploadDocForm(request.POST, request.FILES)
+        form = UploadDocForm(request.POST, request.FILES,)
         if form.is_valid():
             form.save()
             
     return render(request, 'documentos/upload.html', {'form': form})
+
     
 
 @login_required

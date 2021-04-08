@@ -9,13 +9,15 @@ urlpatterns = [
     path('pasta/<int:id>', views.pastaView, name="pasta-view"),
     path('novapasta/', views.novaPasta, name="nova-pasta"),
     path('delete/<int:id>', views.deletePasta, name="delete-pasta"),
-    path('pasta/<int:id>/itens', views.itensList, name="itens-list"),
+    # path('pasta/<int:id>/itens', views.itensList, name="itens-list"),
     path('doc/', views.empresaDoc, name="empresa-doc"),
     path('documento/<int:id>', views.documentoView, name="documento-view"),
     # path('novodoc/', views.novoDoc, name="novo-doc"),
     path('edit/<int:id>', views.editDoc, name="edit-doc"),
     path('delete/<int:id>', views.deleteDoc, name="delete-doc"),
-    path('doc/upload', views.DocUploadView, name="DocUploadView"),
+    #path('doc/upload', views.DocUploadView, name="DocUploadView"),
+    path('pasta/<int:id>/upload', views.DocUploadView, name="DocUploadView"),
+    #path('pasta/<int:id>/delete/<int:id>', views.deleteItem, name="delete-item"),
 
 ]
 

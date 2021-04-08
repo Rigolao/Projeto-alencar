@@ -179,10 +179,29 @@ ul.messages li {
 
 .auth-card {
     margin-bottom: 30px;
+    left: 250px;
+    
 }
 
 .change-form-p {
     margin-top: 30px;
-    text-align: center;
+    text-align: center; 
 }
 
+/* drop */
+
+#drop_zone {
+    border: 5px solid blue;
+    width:  800px;
+    height: 400px;
+  }
+
+#drop_zone p {
+    text-align: center;
+    position: relative;
+    top: 50%;
+}
+
+#drop_zone input {
+    height: auto;
+}

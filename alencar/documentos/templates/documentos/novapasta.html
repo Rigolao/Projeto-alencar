@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 
 {% block title %}Documentos{% endblock %}
 
@@ -10,7 +11,7 @@
     <h1>Adicione a nova pasta</h1>
     <form method="POST">
         {% csrf_token %}
-        {{ form.as_p }}
+        {{ form|crispy }}
         <input type="submit" class="btn btn-success" value="Criar pasta">
     </form>
 </div>

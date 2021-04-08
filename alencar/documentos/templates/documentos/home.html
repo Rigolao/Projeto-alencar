@@ -21,9 +21,9 @@
     <ul class="doc-list">
         {% for pasta in pastas %}
         <li class="doc-item">
-            <span><a href="/doc/upload">{{pasta.title}}</a></span>
+            <span><a href="/pasta/{{pasta.id}}/upload">{{pasta.title}}</a></span>
             <a href="/delete/{{pasta.id}}" class="delete-btn"><span><i class="fas fa-times-circle"></i></span></a>
-            <a href="/pasta/{{pasta.id}}/itens"><span><i class="fas fa-box"></i></span></a>
+            <a href="/pasta/{{pasta.id}}"><span><i class="fas fa-box"></i></span></a>
             <span><i class="fas fa-download"></i></span>
         </li>
         {% endfor %}

@@ -35,6 +35,8 @@ class EDocModel(models.Model):
 class Pasta(models.Model):
 
     title = models.CharField(max_length=255)
+    nomePdf = models.FileField(upload_to='pdfs/')
+    NomeDoc = models.CharField(max_length=255)
 
     created_at = models.DateTimeField(auto_now_add=True)
 

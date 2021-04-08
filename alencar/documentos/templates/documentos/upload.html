@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 
-{% block title %}Novo Documento{% endblock %}
+{% block title %}Adicione o Documento{% endblock %}
 
 {% block content %} 
 <div class="offset-1 col-10 list-div">
@@ -11,7 +11,10 @@
     <h1>Adicione o documento</h1>
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %} 
-        {{ form }}
+        {{ form|crispy }}
+        <div id="drop_zone" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);">
+            <p>Arraste um os mais arquivos aqui ...</p>
+        </div>
         <input type="submit" class="btn btn-success" value="Adicionar documento">
     </form>     
 </div>
