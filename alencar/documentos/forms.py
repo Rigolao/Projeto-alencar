@@ -11,7 +11,7 @@ class UploadDocForm(forms.ModelForm):
     
     class Meta:
         model = EDocModel
-        fields = ('title', 'pdf')   
+        fields = ('title', 'pdf', 'pasta')   
 
 class PastaForm(forms.ModelForm):
 

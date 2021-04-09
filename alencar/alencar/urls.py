@@ -15,10 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from documentos.views import file_upload_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('documentos.urls')),
     #path('accounts/', include('accounts.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
+    path('upload/upload', file_upload_view, name='upload-view'),
 ]

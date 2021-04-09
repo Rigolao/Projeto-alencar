@@ -1,6 +1,7 @@
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
+from documentos.views import MainView
 
 from . import views
 
@@ -16,8 +17,9 @@ urlpatterns = [
     path('edit/<int:id>', views.editDoc, name="edit-doc"),
     path('delete/<int:id>', views.deleteDoc, name="delete-doc"),
     #path('doc/upload', views.DocUploadView, name="DocUploadView"),
-    path('pasta/<int:id>/upload', views.DocUploadView, name="DocUploadView"),
+    path('upload/', views.DocUploadView, name="DocUploadView"),
     #path('pasta/<int:id>/delete/<int:id>', views.deleteItem, name="delete-item"),
+    #path('upload/upload', views.file_upload_view, name="upload-view"),
 
 ]
 

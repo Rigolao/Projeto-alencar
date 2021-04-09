@@ -1,7 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
-from django.http import HttpResponse
+from django.views.generic import TemplateView
+from django.http import HttpResponse, JsonResponse
 from .forms import DocForm
 from .forms import UploadDocForm
 from .forms import PastaForm
@@ -10,6 +11,19 @@ from django.contrib import messages
 from .models import Documento 
 from .models import EDocModel
 from .models import Pasta
+from .models import Doc
+
+class MainView(TemplateView):
+    template_name = 'documentos/upload.html'
+
+def file_upload_view(request):
+    #print(request.FILES)
+    if request.method == 'POST':
+        my_file = request.FILES.get('file')
+        Doc.objects.create(upload=my_file)
+        return HttpResponse('')
+    return JsonResponse({'post': 'false'})
+
 
 @login_required
 def pastaList(request):
@@ -107,13 +121,14 @@ def documentoView(request, id):
     return render(request, 'documentos/documento.html', {'documento': documento})
 
 @login_required
-def DocUploadView(request, id):
+def DocUploadView(request):
     form = UploadDocForm()
+    #File = DataTransferItem.getAsFile()
     if request.method == 'POST':
         form = UploadDocForm(request.POST, request.FILES,)
         if form.is_valid():
             form.save()
-            
+
     return render(request, 'documentos/upload.html', {'form': form})
 
     

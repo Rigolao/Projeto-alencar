@@ -21,17 +21,6 @@ class Documento(models.Model):
     def __str__(self):
         return self.title
 
-class EDocModel(models.Model):
-
-    title = models.CharField(max_length=80)
-    pdf = models.FileField(upload_to='pdfs/')
-
-    class Meta:
-        ordering = ['title']
-
-    def __str__(self):
-        return f"{self.title}"
-
 class Pasta(models.Model):
 
     title = models.CharField(max_length=255)
@@ -42,3 +31,22 @@ class Pasta(models.Model):
 
     def __str__(self):
         return self.title
+
+class EDocModel(models.Model):
+
+    title = models.CharField(max_length=80)
+    pdf = models.FileField(upload_to='pdfs/')
+    pasta = models.ManyToManyField("Pasta", related_name='+')
+
+    class Meta:
+        ordering = ['title']
+
+    def __str__(self):
+        return f"{self.title}"
+
+class Doc(models.Model):
+    
+    upload = models.FileField(upload_to='pdfs/')
+
+    def __str__(self):
+        return str(self.pk)

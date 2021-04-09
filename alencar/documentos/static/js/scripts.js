@@ -32,12 +32,24 @@ $(document).ready(function() {
 
 /* drop */
 
+// Dropzone.autoDiscover = false;
+
+// const myDropzone = new Dropzone("my-dropzone", {
+//     url:"upload/",
+//     maxFiles: 1,
+//     maxFilesize: 1,
+//     acceptedFiles: '.png, .pdf, .jpeg'
+// })
+
+
+
+
 function dropHandler(ev) {
     console.log('File(s) dropped');
-  
+
     // Impedir o comportamento padrão (impedir que o arquivo seja aberto)
     ev.preventDefault();
-  
+
     if (ev.dataTransfer.items) {
       // Use a interface DataTransferItemList para acessar o (s) arquivo (s)
       for (var i = 0; i < ev.dataTransfer.items.length; i++) {

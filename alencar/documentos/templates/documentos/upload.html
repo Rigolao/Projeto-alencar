@@ -4,18 +4,16 @@
 {% block title %}Adicione o Documento{% endblock %}
 
 {% block content %} 
-<div class="offset-1 col-10 list-div">
+<div class="offset-1 col-10 doc-uplod">
     <a href="/">
         <i class="fas fa-long-arrow-alt-left"></i>
     </a>
     <h1>Adicione o documento</h1>
-    <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %} 
-        {{ form|crispy }}
-        <div id="drop_zone" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);">
-            <p>Arraste um os mais arquivos aqui ...</p>
+    <form action="upload/" method="POST" class="dropzone dz" id="my-dropzone">
+        {% csrf_token %}
+        <div class="fallback">
+          <input name="file" type="file" multiple />
         </div>
-        <input type="submit" class="btn btn-success" value="Adicionar documento">
-    </form>     
+    </form>    
 </div>
 {% endblock %}

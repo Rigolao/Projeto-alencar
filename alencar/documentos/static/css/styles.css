@@ -6,6 +6,16 @@
     margin: 0;
 }
 
+.dz {
+    border: dashed !important;
+    border-color: #ccc !important;
+    border-radius: 10px !important;
+}
+
+.dz:hover {
+    background-color: aliceblue !important;
+}
+
 /* Navbar */
 
 .navbar {
@@ -135,13 +145,13 @@
 /*Rodapé */
 
 footer {
-    background-color: #e3f2fd;
+    background-color: #92e6f1;
     height: 300px;
-    border-top: 2px solid #3336f7;
+    border-top: 2px solid #000000;
 }
 
 footer p {
-    color: rgb(0, 132, 255);
+    color: #000000;
     text-align: center;
     top: 50%;
     position: relative;
@@ -179,7 +189,7 @@ ul.messages li {
 
 .auth-card {
     margin-bottom: 30px;
-    left: 250px;
+    left: 300px;
     
 }
 
@@ -188,12 +198,19 @@ ul.messages li {
     text-align: center; 
 }
 
+.backgroung-image {
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
 /* drop */
 
 #drop_zone {
-    border: 5px solid blue;
+    border: 5px dashed rgb(0, 102, 255);
     width:  800px;
     height: 400px;
+    border-radius: 5px;
   }
 
 #drop_zone p {
@@ -204,4 +221,8 @@ ul.messages li {
 
 #drop_zone input {
     height: auto;
+}
+
+#fas.fa-file-upload {
+    position: relative;
 }
